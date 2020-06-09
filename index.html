@@ -10,23 +10,24 @@
     <header ng-include = "'header.html'"></header>
     <div class = "content">
       <div ng-controller = "ToDoController">
-        <button ng-click = "order = 'name'">Order by Name</button>
+        <button ng-click = "order = 'task'">Order by Task</button>
         <button ng-click = "order = 'duration'">Order by Approx Duration</button>
         <input type = "text" ng-model = "search" placeholder = "Search for tasks:"/>
         <ul>
-          <li ng-repeat = "task in tasks | orderBy: order | filter: search" ng-show = "task.available">
-            <img ng-src = "{{task.thumb}}" style = "margin: -12px 10px 0 0; float: left;  width: 50px;"
-                 ng-show = "task.thumb"/>
-            <h3>{{task.name}} - {{task.duration}} hr/s</h3>
+          <li ng-repeat = "singleTask in tasks | orderBy: order | filter: search" ng-show = "singleTask.available">
+            <h3>{{singleTask.task}} - {{singleTask.duration}} hr/s</h3>
             <div class = "remove" ng-click = "removeTask(task)">X</div>
-            <span class = "belt"style = "background: {{task.priority}}">{{task.priority}}</span>
+            <span class = "belt"style = "background: {{singleTask.priorityColour}}">{{singleTask.priority}}</span>
           </li>
         </ul>
         <form ng-submit = "addTask()">
-          <input type = "text" placeholder = "Name" ng-model = "newTask.name" />
-          <input type = "text" placeholder = "Priority" ng-model = "newTask.priority" />
+          <input type = "text" placeholder = "Add Task" ng-model = "newTask.task" />
+          <select ng-model = "newTask.priority" ng-options = "x for x in priorities" required>
+            <option value = "" disabled selected>Choose Priority</option>
+          </select>
           <input type = "text" placeholder = "Approx Duration" ng-model = "newTask.duration" />
           <input type = "submit" value = "Add new task" />
+
         </form>
       </div>
     </div>

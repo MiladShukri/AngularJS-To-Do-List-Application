@@ -101,6 +101,24 @@ main{
   margin: 10px 0;
 }
 
+.content select{
+  width: 90%;
+  padding: 10px 5%;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  margin: 10px 0;
+}
+
+select:required:invalid {
+  color: gray;
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: black;
+}
+
 .content input[type="submit"]:last-child{
   width: 150px;
   display: block;
