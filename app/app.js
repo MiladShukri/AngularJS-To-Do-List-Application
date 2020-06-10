@@ -10,7 +10,7 @@ ToDoListApp.run(function(){
 
 });
 
-ToDoListApp.controller('ToDoController', ['$scope', function($scope){
+ToDoListApp.controller('ToDoController', ['$scope', '$http', function($scope, $http){
 
   $scope.priorities = ["Top", "Medium", "Low"];
 
@@ -55,56 +55,60 @@ ToDoListApp.controller('ToDoController', ['$scope', function($scope){
 
   };
 
-  $scope.tasks = [
-    {
-      task: "Meeting",
-      priorityColour: "Red",
-      priority: "Top",
-      duration: 1,
-      available: true,
-    },
-    {
-      task: "Workout",
-      priorityColour: "Green",
-      priority: "Low",
-      duration: 2,
-      available: true,
-    },
-    {
-      task: "Work on some code",
-      priorityColour: "Red",
-      priority: "Top",
-      duration: 4,
-      available: true,
-    },
-    {
-      task: "Produce some tests for the code",
-      priorityColour: "Orange",
-      priority: "Medium",
-      duration: 3,
-      available: true,
-    },
-    {
-      task: "Upload work to github",
-      priorityColour: "Orange",
-      priority: "Medium",
-      duration: 1,
-      available: true,
-    },
-    {
-      task: "Grab some shopping",
-      priorityColour: "Green",
-      priority: "Low",
-      duration: 1,
-      available: true,
-    },
-    {
-      task: "Play some games",
-      priorityColour: "Green",
-      priority: "Low",
-      duration: 3,
-      available: true,
-    },
-  ];
+  // $scope.tasks = [
+  //   {
+  //     task: "Meeting",
+  //     priorityColour: "Red",
+  //     priority: "Top",
+  //     duration: 1,
+  //     available: true,
+  //   },
+  //   {
+  //     task: "Workout",
+  //     priorityColour: "Green",
+  //     priority: "Low",
+  //     duration: 2,
+  //     available: true,
+  //   },
+  //   {
+  //     task: "Work on some code",
+  //     priorityColour: "Red",
+  //     priority: "Top",
+  //     duration: 4,
+  //     available: true,
+  //   },
+  //   {
+  //     task: "Produce some tests for the code",
+  //     priorityColour: "Orange",
+  //     priority: "Medium",
+  //     duration: 3,
+  //     available: true,
+  //   },
+  //   {
+  //     task: "Upload work to github",
+  //     priorityColour: "Orange",
+  //     priority: "Medium",
+  //     duration: 1,
+  //     available: true,
+  //   },
+  //   {
+  //     task: "Grab some shopping",
+  //     priorityColour: "Green",
+  //     priority: "Low",
+  //     duration: 1,
+  //     available: true,
+  //   },
+  //   {
+  //     task: "Play some games",
+  //     priorityColour: "Green",
+  //     priority: "Low",
+  //     duration: 3,
+  //     available: true,
+  //   },
+  // ];
+
+  $http.get('data/tasks.json').then(function(response){
+    $scope.tasks = response.data;
+  });
 
 }]);
