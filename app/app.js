@@ -75,3 +75,11 @@ ToDoListApp.controller('ToDoController', ['$scope', '$http', function($scope, $h
   });
 
 }]);
+
+ToDoListApp.controller('ContactController', ['$scope', '$location', function($scope, $location){
+
+  $scope.sendMessage = function(){
+    $location.path('/contact-success');
+  }
+
+}]);
