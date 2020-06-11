@@ -70,6 +70,10 @@ ToDoListApp.controller('ToDoController', ['$scope', '$http', function($scope, $h
 
   };
 
+  $scope.removeAll = function(){
+    $scope.tasks = [];
+  };
+
   $http.get('data/tasks.json').then(function(response){
     $scope.tasks = response.data;
   });
