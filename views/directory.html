@@ -1,0 +1,20 @@
+<div class = "content">
+    <button ng-click = "order = 'task'">Order by Task</button>
+    <button ng-click = "order = 'duration'">Order by Approx Duration</button>
+    <input type = "text" ng-model = "search" placeholder = "Search for tasks:"/>
+    <ul id = "task-list">
+      <li ng-repeat = "singleTask in tasks | orderBy: order | filter: search" ng-show = "singleTask.available">
+        <h3>{{singleTask.task}} - {{singleTask.duration}} hr/s</h3>
+        <div class = "remove" ng-click = "removeTask(task)">X</div>
+        <span class = "belt"style = "background: {{singleTask.priorityColour}}">{{singleTask.priority}}</span>
+      </li>
+    </ul>
+    <form ng-submit = "addTask()">
+      <input type = "text" placeholder = "Add Task" ng-model = "newTask.task" />
+      <select ng-model = "newTask.priority" ng-options = "x for x in priorities" required>
+        <option value = "" disabled selected>Choose Priority</option>
+      </select>
+      <input type = "text" placeholder = "Approx Duration" ng-model = "newTask.duration" />
+      <input type = "submit" value = "Add new task" />
+    </form>
+</div>

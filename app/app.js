@@ -1,9 +1,25 @@
-var ToDoListApp = angular.module('ToDoListApp', []);
+var ToDoListApp = angular.module('ToDoListApp', ['ngRoute']);
 
-ToDoListApp.config(function(){
+ToDoListApp.config(['$routeProvider', function($routeProvider){
 
+  $routeProvider
+    .when('/home', {
+      templateUrl: 'views/home.html',
+      controller: 'ToDoController'
+    })
+    .when('/contact', {
+      templateUrl: 'views/contact.html',
+      controller: 'ContactController'
+    })
+    .when('/directory', {
+      templateUrl: 'views/directory.html',
+      controller: 'ToDoController'
+    })
+    .otherwise({
+      redirectTo: '/home'
+    })
 
-});
+}]);
 
 ToDoListApp.run(function(){
 
@@ -47,7 +63,6 @@ ToDoListApp.controller('ToDoController', ['$scope', '$http', function($scope, $h
         priorityColour: "Green"
       });
     }
-
 
     $scope.newTask.task = "";
     $scope.newTask.priority = "";
