@@ -1,6 +1,7 @@
 <div class = "content">
     <button ng-click = "order = 'task'">Order by Task</button>
-    <button ng-click = "order = 'duration'">Order by Approx Duration</button>
+    <button ng-click = "order = '-priority'">Order by Priority</button>
+    <button ng-click = "order = 'duration'" style = "margin-left: 33%; margin-right: 33%;">Order by Approx Duration</button>
     <p style = "text-decoration: underline; font-size: 32px; font-weight: bold;" > Uncompleted Tasks: </p>
     <ul id = "task-list">
       <li ng-repeat = "singleTask in tasks | orderBy: order | filter: search" ng-show = "singleTask.available">
