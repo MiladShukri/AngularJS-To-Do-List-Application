@@ -5,7 +5,7 @@
     <ul id = "task-list">
       <li ng-repeat = "singleTask in tasks | orderBy: order | filter: search" ng-show = "singleTask.available">
         <h3>{{singleTask.task}} - {{singleTask.duration}} hr/s</h3>
-        <div class = "remove" ng-click = "removeTask(task)">X</div>
+        <div class = "remove" ng-click = "removeTask(singleTask)">X</div>
         <span class = "belt"style = "background: {{singleTask.priorityColour}}">{{singleTask.priority}}</span>
       </li>
     </ul>

@@ -1,4 +1,4 @@
-var ToDoListApp = angular.module('ToDoListApp', ['ngRoute']);
+var ToDoListApp = angular.module('ToDoListApp', ['ngRoute', 'ngAnimate']);
 
 ToDoListApp.config(['$routeProvider', function($routeProvider){
 
@@ -9,6 +9,10 @@ ToDoListApp.config(['$routeProvider', function($routeProvider){
     })
     .when('/contact', {
       templateUrl: 'views/contact.html',
+      controller: 'ContactController'
+    })
+    .when('/contact-success', {
+      templateUrl: 'views/contact-success.html',
       controller: 'ContactController'
     })
     .when('/directory', {
@@ -28,12 +32,12 @@ ToDoListApp.run(function(){
 
 ToDoListApp.controller('ToDoController', ['$scope', '$http', function($scope, $http){
 
-  $scope.priorities = ["Top", "Medium", "Low"];
-
   $scope.removeTask = function(task){
     var removedTask = $scope.tasks.indexOf(task);
     $scope.tasks.splice(removedTask,1)
-  }
+  };
+
+  $scope.priorities = ["Top", "Medium", "Low"];
 
   $scope.addTask = function(){
     if ($scope.newTask.priority == "Top"){
