@@ -37,6 +37,20 @@ ToDoListApp.controller('ToDoController', ['$scope', '$http', function($scope, $h
     $scope.tasks.splice(removedTask,1)
   };
 
+  $scope.completedTasks = [];
+
+  $scope.completeTask = function(task){
+    var completedTask = $scope.tasks.indexOf(task);
+    $scope.tasks.splice(completedTask,1)
+    $scope.completedTasks.push({
+      task: task.task,
+      priority: task.priority,
+      duration: parseInt(task.duration),
+      available: task.available,
+      priorityColour: task.priorityColour
+    });
+  };
+
   $scope.priorities = ["Top", "Medium", "Low"];
 
   $scope.addTask = function(){

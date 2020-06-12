@@ -6,10 +6,10 @@
       <li ng-repeat = "singleTask in tasks | orderBy: order | filter: search" ng-show = "singleTask.available">
         <h3>{{singleTask.task}} - {{singleTask.duration}} hr/s</h3>
         <div class = "remove" ng-click = "removeTask(singleTask)">X</div>
-        <div class = "remove" ng-click = "">
+        <div class = "complete" ng-click = "completeTask(singleTask)">
           <img src = "content/img/green_tick.png" style = "width: 100%; height: 100%;"/>
         </div>
-        <span class = "priority"style = "background: {{singleTask.priorityColour}}">{{singleTask.priority}}</span>
+        <span class = "priority" style = "background: {{singleTask.priorityColour}}">{{singleTask.priority}}</span>
       </li>
     </ul>
     <a href = "" ng-click="removeAll()">Delete all tasks</a>
@@ -22,4 +22,10 @@
       <input type = "submit" value = "Add new task" />
     </form>
     <p style = "text-decoration: underline; font-size: 32px; font-weight: bold;" > Completed Tasks: </p>
+    <ul id = "task-list">
+      <li ng-repeat = "singleTask in completedTasks | orderBy: order | filter: search" ng-show = "singleTask.available">
+        <h3>{{singleTask.task}} - {{singleTask.duration}} hr/s</h3>
+        <span class = "priority" style = "background: {{singleTask.priorityColour}}">{{singleTask.priority}}</span>
+      </li>
+    </ul>
 </div>

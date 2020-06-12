@@ -151,6 +151,18 @@ option {
   margin-left: 10px;
 }
 
+.complete{
+  float: right;
+  padding: 5px;
+  background: #fff;
+  width: 18px;
+  text-align: center;
+  border-radius: 20px;
+  color: green;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
 /* The starting CSS styles for the enter animation */
 main.ng-enter {
   transition:0.5s linear all;
